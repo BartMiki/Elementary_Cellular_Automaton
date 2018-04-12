@@ -20,9 +20,24 @@ namespace CellularAutomata
     /// </summary>
     public partial class MainWindow : Window
     {
+        private const int CellSize = 20;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void RunSimulation(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Canvas.Width = int.Parse(CellCountBox.Text) * CellSize;
+                Canvas.Height = int.Parse(IterationsBox.Text) * CellSize;
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
