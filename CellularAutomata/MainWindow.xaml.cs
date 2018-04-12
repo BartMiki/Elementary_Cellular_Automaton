@@ -40,14 +40,6 @@ namespace CellularAutomata
             {
 
             }
-            finally
-            {
-                CellsCanva.Width = 5 * CellSize;
-                CellsCanva.Height = 1 * CellSize;
-
-                _canvasHandler.PrintIteration(
-                    new bool[] { true, false, false, true, true }, 0);
-            }
         }
     }
 }
