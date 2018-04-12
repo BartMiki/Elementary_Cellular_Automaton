@@ -21,22 +21,32 @@ namespace CellularAutomata
     public partial class MainWindow : Window
     {
         private const int CellSize = 20;
+        private CanvasHandler _canvasHandler;
 
         public MainWindow()
         {
             InitializeComponent();
+            _canvasHandler = new CanvasHandler(CellsCanva,CellSize);
         }
 
         private void RunSimulation(object sender, RoutedEventArgs e)
         {
             try
             {
-                Canvas.Width = int.Parse(CellCountBox.Text) * CellSize;
-                Canvas.Height = int.Parse(IterationsBox.Text) * CellSize;
+                CellsCanva.Width = int.Parse(CellCountBox.Text) * CellSize;
+                CellsCanva.Height = int.Parse(IterationsBox.Text) * CellSize;
             }
             catch (Exception)
             {
 
+            }
+            finally
+            {
+                CellsCanva.Width = 5 * CellSize;
+                CellsCanva.Height = 1 * CellSize;
+
+                _canvasHandler.PrintIteration(
+                    new bool[] { true, false, false, true, true }, 0);
             }
         }
     }

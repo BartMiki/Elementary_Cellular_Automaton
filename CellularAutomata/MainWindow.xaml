@@ -8,7 +8,7 @@
         Title="MainWindow"
         x:Name="MainView">
     <DockPanel>
-        <StackPanel x:Name="Menu" DockPanel.Dock="Top" Orientation="Horizontal" Height="30">
+        <StackPanel x:Name="Menu" DockPanel.Dock="Top" Orientation="Horizontal">
             <Label>Rule Number</Label>
             <TextBox x:Name="RuleCodeBox" MinWidth="50"></TextBox>
             <Label>Cells Count</Label>
@@ -17,12 +17,15 @@
             <TextBox x:Name="IterationsBox" MinWidth="50"></TextBox>
             <Button x:Name="RunButton" Click="RunSimulation">Run</Button>
         </StackPanel>
-        <ScrollViewer 
+        <ScrollViewer
             HorizontalScrollBarVisibility="Auto"
             VerticalScrollBarVisibility="Auto">
-            <Canvas x:Name="Canvas" Width="0" Height="0">
-
-            </Canvas>
+            <Canvas 
+                    x:Name="CellsCanva" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    
+                />
         </ScrollViewer>
     </DockPanel>
 </Window>
