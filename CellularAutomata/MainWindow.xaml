@@ -1,21 +1,43 @@
-﻿<Window x:Class="CellularAutomata.MainWindow"
+﻿<Window x:Class="ElementaryCellularAutomaton.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CellularAutomata"
+        xmlns:local="clr-namespace:ElementaryCellularAutomaton"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Elementary Cellular Automaton"
         x:Name="MainView">
-    <DockPanel>
-        <StackPanel x:Name="Menu" DockPanel.Dock="Top" Orientation="Horizontal">
+    <DockPanel
+        KeyDown="UIElement_OnKeyDown"
+        Background="Teal"
+        >
+        <StackPanel 
+            x:Name="Menu" 
+            DockPanel.Dock="Top" 
+            Orientation="Horizontal"
+            Margin="5">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Margin" Value="1,0"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5,0"/>
+                    <Setter Property="Padding" Value="7,0"/>
+                </Style>
+            </StackPanel.Resources>
             <Label>Rule Number</Label>
-            <TextBox x:Name="RuleCodeBox" MinWidth="50"></TextBox>
+            <TextBox x:Name="RuleCodeBox" MinWidth="50">0</TextBox>
             <Label>Cells Count</Label>
-            <TextBox x:Name="CellCountBox" MinWidth="50"></TextBox>
+            <TextBox x:Name="CellCountBox" MinWidth="50">0</TextBox>
             <Label>Iterations</Label>
-            <TextBox x:Name="IterationsBox" MinWidth="50"></TextBox>
-            <Button x:Name="RunButton" Click="RunSimulation">Run</Button>
+            <TextBox x:Name="IterationsBox" MinWidth="50">0</TextBox>
+            <Button x:Name="RunButton" Click="RunButton_OnClick">Run</Button>
+            <Label x:Name="ErrorMessage" Foreground="Red"></Label>
         </StackPanel>
         <ScrollViewer
             HorizontalScrollBarVisibility="Auto"
@@ -24,7 +46,8 @@
                     x:Name="CellsCanva" 
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    
+                    Background="White"
+                    Margin="1"
                 />
         </ScrollViewer>
     </DockPanel>
