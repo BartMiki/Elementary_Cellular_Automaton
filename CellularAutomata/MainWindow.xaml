@@ -41,7 +41,8 @@
         </StackPanel>
         <ScrollViewer
             HorizontalScrollBarVisibility="Auto"
-            VerticalScrollBarVisibility="Auto">
+            VerticalScrollBarVisibility="Auto"
+            Background="DarkSlateGray">
             <Canvas 
                     x:Name="CellsCanva" 
                     HorizontalAlignment="Left"

@@ -36,13 +36,11 @@ namespace ElementaryCellularAutomaton
             ErrorMessage.Content = string.Empty;
             try
             {
-                int cellCanvasWidth = CalculateCellCanvasWidth();
-                CellsCanva.Width = CalculateCellCanvasHeight();
-                CellsCanva.Height = CalculateCellCanvasWidth();
+                
+                CellsCanva.Width = CalculateCellCanvasWidth();
+                CellsCanva.Height = CalculateCellCanvasHeight();
+                bool[] initCells = ParseCellCount();
 
-                MainView.Width = cellCanvasWidth + CellsCanva.Margin.Left + CellsCanva.Margin.Right;
-                bool[] initCells = new bool[int.Parse(CellCountBox.Text)];
-                initCells[initCells.Length / 2] = true;
                 Automata.AutomataBuilder automataBuilder = new Automata.AutomataBuilder();
                 _automata = automataBuilder
                     .AddCanvasHandler(_canvasHandler)
@@ -83,6 +81,23 @@ namespace ElementaryCellularAutomaton
                 if (result < 1)
                     throw new ArgumentOutOfRangeException("Cell count must be higher then 0");
                 return result;
+            }
+            catch (FormatException e)
+            {
+                throw new FormatException("Cell count must be integer.");
+            }
+        }
+
+        private bool[] ParseCellCount()
+        {
+            try
+            {
+                int size = int.Parse(CellCountBox.Text);
+                if (size < 1)
+                    throw new ArgumentOutOfRangeException("Cell count must be higher then 0");
+                bool[] initCells = new bool[size];
+                initCells[initCells.Length / 2] = true;
+                return initCells;
             }
             catch (FormatException e)
             {
